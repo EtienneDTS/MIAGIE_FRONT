@@ -70,7 +70,7 @@ footer a .icons {
 .map-base {
   width: 306px;
   height: 600px;
-  margin-top: 170px;
+  margin-top: 150px;
   transform: translateY(-10%);
   background: url("https://meowlivia.s3.us-east-2.amazonaws.com/codepen/map/9.png")
     center center / cover;
@@ -292,16 +292,21 @@ footer a .icons {
 
 .toggle-map {
   font: 34px "Lobster Two", cursive;
+  transform: translateY(-200px);
+  background-color: #6f1515;
   
+  color: #ffffff;
  
 }
 
 .toggle-map:hover {
-  transform: translateY(-2px); /* Élévation légère au survol */
+  transform: translateY(-202px);
+  
+  border: 2px solid #ffcc00;
 }
 
 .toggle-map:active {
-  transform: translateY(1px); /* Réaction au clic */
+  transform: translateY(-201px); 
 }
 
 .map-base.active .flap--1 {

@@ -17,6 +17,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/eleves" element={<GetAll about={1}/>} />
         <Route path="/profs" element={<GetAll about={2}/>} />
+        
         {/* <Route path="/about" element={<About />} /> */}
       </Routes>
     </Router>

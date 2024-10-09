@@ -120,9 +120,10 @@ const Home: React.FC = () => {
         </div>
 
         <div className="instructions">
-          <button className="toggle-map" onClick={toggleMap}>
-            {isMapOpen ? "Fermer la carte" : "Ouvrir la carte"}
-          </button>
+          {!isMapOpen && (<button className="toggle-map" onClick={toggleMap}>{isMapOpen ? "Fermer la carte" : "Ouvrir la carte"}</button>)}
+          
+            
+          
         </div>
       </div>
     </div>
