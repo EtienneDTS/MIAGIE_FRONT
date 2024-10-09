@@ -1,40 +1,43 @@
 .menu {
-    position: absolute;
-    top: 140px;
-    left: 50%;
-    transform: translateX(-50%);
-    
+  position: absolute;
+  top: 140px;
+  left: 50%;
+  transform: translateX(-50%);
 
-    padding: 20px;
-    z-index: 2;
-    font-family: "Lobster Two", cursive;
-    
-  }
-  
-  .menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .menu li {
-    padding: 15px 25px; /* Plus d'espacement pour respirer */
-    cursor: pointer;
-    transition: all 0.3s ease-in-out; /* Transition sur tous les éléments pour plus de fluidité */
-    color: #000000; /* Gris clair élégant pour un texte sobre */
-    font-size: 40px; /* Taille réduite pour plus de modernité */
-    font-weight: 700; /* Police plus épaisse mais équilibrée */
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Ligne de séparation subtile */
-  }
-  
-  .menu li:last-child {
-    border-bottom: none; /* Pas de ligne sur le dernier élément */
-  }
-  
-  .menu li:hover {
-    background: rgba(46, 136, 8, 0.281); /* Fond violet clair au survol */
-    color: #000000; /* Couleur blanc-violet pour un contraste élégant au survol */
-    box-shadow: 0 4px 10px rgba(56, 159, 13, 0.504); /* Ombre violette subtile au survol */
-    border-radius: 5px; /* Coins légèrement arrondis au survol */
-    transform: translateY(-2px); 
-  }
+  padding: 20px;
+  z-index: 2;
+  font-family: "Lobster Two", cursive;
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  padding: 15px 25px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  color: #000000;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.menu li:last-child {
+  border-bottom: none;
+}
+
+.menu li:hover {
+  background: rgba(255, 204, 0, 0.281);
+  color: #000000;
+  box-shadow: 0 4px 10px rgba(255, 204, 0, 0.504);
+  border-radius: 5px;
+  transform: translateY(-2px);
+}
+
+/* background: rgba(46, 136, 8, 0.281);
+color: #000000;
+box-shadow: 0 4px 10px rgba(56, 159, 13, 0.504);
+border-radius: 5px;
+transform: translateY(-2px); */

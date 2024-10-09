@@ -1,12 +1,20 @@
 import React from "react";
-import "./Home.css"; // Importer le fichier CSS
+import "./Home.css"; 
 import { useState } from "react";
 import { Menu } from "../components/Menu";
 
 const Home: React.FC = () => {
   const [isMapOpen, setIsMapOpen] = useState(false);
+  const [cooldown, setCooldown] = useState(false);
 
   const toggleMap = () => {
+    if (isMapOpen) {
+      setCooldown(false);
+    } else {
+      setTimeout(() => {
+        setCooldown(true);
+      }, 2200);
+    }
     setIsMapOpen(!isMapOpen);
     document.querySelector(".map-base")?.classList.toggle("active");
   };
@@ -14,9 +22,8 @@ const Home: React.FC = () => {
   return (
     <div className="background-image">
       <div className="main-content ">
-      {isMapOpen && <Menu />}
+        {isMapOpen && cooldown && <Menu />}
         <div className="map-base">
-          
           <div className="footsteps footsteps-1">
             <div className="footstep left"></div>
             <div className="footstep right"></div>
