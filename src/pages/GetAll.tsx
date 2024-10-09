@@ -6,102 +6,117 @@ import "./GetAll.css";
 export const GetAll = ({ about }: { about: number }) => {
   const [name, setName] = useState<string>("");
   const [list, setList] = useState<any[]>([]);
+  
 
   const navigate = useNavigate();
   const path = about == 1 ? "eleve" : "professeur";
 
   const fetchData = async (arg: string) => {
     if (arg === "") {
-    const response = await fetch(`http://localhost:8000/${path}`);
-    const data = await response.json();
-    setList(data);
+      const response = await fetch(`http://localhost:8080/${path}`);
+      const data = await response.json();
+      setList(data);
     } else {
-    const response = await fetch(`http://localhost:8000/${path}?nom=${arg}`);
-    const data = await response.json();
-    setList(data);
+      const response = await fetch(`http://localhost:8080/${path}?nom=${arg}`);
+      const data = await response.json();
+      setList(data);
     }
   };
+
+  
 
   useEffect(() => {
     fetchData(name);
   }, [name]);
 
   useEffect(() => {
-    fetchData("");
-    // setList([
-    //     {
-    //       nom: "Dupont",
-    //       prenom: "Jean",
-    //       totalPoints: 120,
-    //       nomMaison: "Gryffondor"
-    //     },
-    //     {
-    //       nom: "Durand",
-    //       prenom: "Marie",
-    //       totalPoints: 150,
-    //       nomMaison: "Serdaigle"
-    //     },
-    //     {
-    //       nom: "Martin",
-    //       prenom: "Pierre",
-    //       totalPoints: 110,
-    //       nomMaison: "Poufsouffle"
-    //     },
-    //     {
-    //       nom: "Lefevre",
-    //       prenom: "Sophie",
-    //       totalPoints: 130,
-    //       nomMaison: "Serpentard"
-    //     },
-    //     {
-    //       nom: "Petit",
-    //       prenom: "Lucas",
-    //       totalPoints: 145,
-    //       nomMaison: "Gryffondor"
-    //     },
-    //     {
-    //       nom: "Moreau",
-    //       prenom: "Elodie",
-    //       totalPoints: 135,
-    //       nomMaison: "Serdaigle"
-    //     },
-    //     {
-    //       nom: "Garcia",
-    //       prenom: "Julien",
-    //       totalPoints: 125,
-    //       nomMaison: "Poufsouffle"
-    //     },
-    //     {
-    //       nom: "Rousseau",
-    //       prenom: "Emma",
-    //       totalPoints: 160,
-    //       nomMaison: "Serpentard"
-    //     },
-    //     {
-    //       nom: "Blanc",
-    //       prenom: "Lucie",
-    //       totalPoints: 105,
-    //       nomMaison: "Gryffondor"
-    //     },
-    //     {
-    //       nom: "Faure",
-    //       prenom: "Hugo",
-    //       totalPoints: 140,
-    //       nomMaison: "Serdaigle"
-    //     },
-    //     {
-    //       nom: "Bernard",
-    //       prenom: "Laura",
-    //       totalPoints: 115,
-    //       nomMaison: "Poufsouffle"
-    //     },
-    //     {
-    //       nom: "Girard",
-    //       prenom: "Paul",
-    //       totalPoints: 155,
-    //       nomMaison: "Serpentard"
-    //     }
-    //   ])
+    // fetchData("");
+    setList([
+      {
+        id: 1,
+        nom: "Dupont",
+        prenom: "Jean",
+        totalPoints: 120,
+        nomMaison: "Gryffondor",
+      },
+      {
+        id: 2,
+        nom: "Durand",
+        prenom: "Marie",
+        totalPoints: 150,
+        nomMaison: "Serdaigle",
+      },
+      {
+        id: 3,
+        nom: "Martin",
+        prenom: "Pierre",
+        totalPoints: 110,
+        nomMaison: "Poufsouffle",
+      },
+      {
+        id: 4,
+        nom: "Lefevre",
+        prenom: "Sophie",
+        totalPoints: 130,
+        nomMaison: "Serpentard",
+      },
+      {
+        id: 5,
+        nom: "Petit",
+        prenom: "Lucas",
+        totalPoints: 145,
+        nomMaison: "Gryffondor",
+      },
+      {
+        id: 6,
+        nom: "Moreau",
+        prenom: "Elodie",
+        totalPoints: 135,
+        nomMaison: "Serdaigle",
+      },
+      {
+        id: 7,
+        nom: "Garcia",
+        prenom: "Julien",
+        totalPoints: 125,
+        nomMaison: "Poufsouffle",
+      },
+      {
+        id: 8,
+        nom: "Rousseau",
+        prenom: "Emma",
+        totalPoints: 160,
+        nomMaison: "Serpentard",
+      },
+      {
+        id: 9,
+        nom: "Blanc",
+        prenom: "Lucie",
+        totalPoints: 105,
+        nomMaison: "Gryffondor",
+      },
+      {
+        id: 10,
+        nom: "Faure",
+        prenom: "Hugo",
+        totalPoints: 140,
+        nomMaison: "Serdaigle",
+      },
+      {
+        id: 11,
+        nom: "Bernard",
+        prenom: "Laura",
+        totalPoints: 115,
+        nomMaison: "Poufsouffle",
+      },
+      {
+        id: 12,
+        nom: "Girard",
+        prenom: "Paul",
+        totalPoints: 155,
+        nomMaison: "Serpentard",
+      },
+    ]);
   }, []);
 
   return (
@@ -122,13 +137,19 @@ export const GetAll = ({ about }: { about: number }) => {
             key={index}
             className="item"
             onClick={() => {
-              navigate(`${path}/${item.id}`);
+              console.log(path);
+              console.log(`/${path}/${item.id}`);
+              navigate(`/${path}/${item.id}`);
             }}
           >
             <p>{item.nom}</p>
             <p>{item.prenom}</p>
             <p>{item.totalPoints}</p>
-            <p ><div className="houselogo"><HouseLogo house={item.nomMaison}/></div></p>
+            <p>
+              <div className="houselogo">
+                <HouseLogo house={item.nomMaison} />
+              </div>
+            </p>
           </div>
         ))}
       </div>

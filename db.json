@@ -1,0 +1,10 @@
+[
+    {
+        "nom": "nom",
+        "prenom": "prenom",
+        "id": 1,
+        "motDePasse": "motDePasse",
+        "fonction": "professeur"
+        
+    }
+]

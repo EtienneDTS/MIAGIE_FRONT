@@ -2,8 +2,9 @@ import React from "react";
 import "./Home.css"; 
 import { useState } from "react";
 import { Menu } from "../components/Menu";
+import "./Login.css";
 
-const Home: React.FC = () => {
+const Home = ({loggedUser}: any) => {
   const [isMapOpen, setIsMapOpen] = useState(false);
   const [cooldown, setCooldown] = useState(false);
 
@@ -22,7 +23,7 @@ const Home: React.FC = () => {
   return (
     <div className="background-image">
       <div className="main-content ">
-        {isMapOpen && cooldown && <Menu />}
+        {isMapOpen && cooldown && <Menu loggedUser={loggedUser}/>}
         <div className="map-base">
           <div className="footsteps footsteps-1">
             <div className="footstep left"></div>

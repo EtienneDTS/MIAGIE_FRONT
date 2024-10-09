@@ -1,7 +1,7 @@
 import "./Menu.css";
 import { useNavigate } from "react-router-dom";
 
-export const Menu = () => {
+export const Menu = (loggedUser: any) => {
   const navigate = useNavigate();
 
   return (
@@ -10,7 +10,7 @@ export const Menu = () => {
         <li onClick={()=>navigate("/eleves")}>Trouver un élève</li>
         <li onClick={()=>navigate("/profs")}>Trouver un professeur</li>
         <li onClick={()=>navigate("/maisons")}>Classement des maisons</li>
-        <li onClick={()=>navigate("/ajouter")}>Ajouter un sorcier</li>
+        {loggedUser && loggedUser.fonction === "professeur" && (<li onClick={()=>navigate("/ajouter")}>Ajouter un sorcier</li>)}
         <li onClick={()=>navigate("/jeux")}>Coupe de feu</li>
       </ul>
     </div>
