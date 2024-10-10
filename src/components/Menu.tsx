@@ -11,7 +11,7 @@ export const Menu = ({loggedUser}: any) => {
         <li onClick={()=>navigate("/profs")}>Trouver un professeur</li>
         <li onClick={()=>navigate("/maisons")}>Classement des maisons</li>
         {loggedUser && loggedUser.fonction === "professeur" && (<li onClick={()=>navigate("/ajouter")}>Ajouter un sorcier</li>)}
-        <li onClick={()=>navigate("/jeux")}>Coupe de feu</li>
+        <li onClick={()=>navigate("/jeu")}>Coupe de feu</li>
       </ul>
     </div>
   );

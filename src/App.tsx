@@ -38,6 +38,10 @@ function App() {
 
         <Route path="/maisons" element={<GetHouses />} />
         <Route path="/maison/:nom" element={<HouseDetail />} />
+        <Route path="/jeu" element={<HouseDetail />} />
+        
+        
+
 
       </Routes>
       

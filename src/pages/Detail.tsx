@@ -11,7 +11,7 @@ interface User {
   totalPoints?: number;
   nomMaison?: string;
   specialite?: string;
-  matiere?: string; 
+  matiere?: string;
 }
 
 export const Detail = ({
@@ -26,6 +26,9 @@ export const Detail = ({
   const [points, setPoints] = useState<boolean>(false);
   const [numberPoints, setNumberPoints] = useState<number>(0);
   const navigate = useNavigate();
+  const [defis, setDefis] = useState<boolean>(false);
+  const [mise, setMise] = useState<number>(0);
+  const [message, setMessage] = useState<string>("");
 
   const fetchUserData = async () => {
     try {
@@ -56,12 +59,35 @@ export const Detail = ({
       },
       body: JSON.stringify({
         idEleve: id,
-        idProfesseur: loggedUser.id,
+        idProfesseur: loggedUser?.id,
         nbPoints: numberPoints,
       }),
     });
     const data = await response.json();
     console.log(data);
+    fetchUserData();
+  };
+
+  const envoyerDefi = async () => {
+    try {
+        await fetch("http://localhost:8080/eleve/propositionPartie", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              idJoueurCible: user?.id,
+              idJoueurSource: loggedUser.id,
+              mise: mise,
+            }),
+          });
+          setMessage("Défi envoyé");
+
+    } catch (error) {
+        setMessage("Erreur lors de l'envoi du défi");
+    }
+    
+
     fetchUserData();
   };
 
@@ -90,6 +116,28 @@ export const Detail = ({
         </div>
       </div>
       <div className="profile-footer">
+        {user &&
+        loggedUser?.fonction === "eleve" &&
+        user?.nomMaison !== loggedUser?.nomMaison &&
+        defis !== true && (
+          <button onClick={() => setDefis(true)}>Défier</button>
+        ) }
+        { defis && (
+          <div>
+            <div className="box">
+              <span>{message}</span>
+              <input
+                type="number"
+                value={mise}
+                min={0}
+                onChange={(e) => {
+                  setMise(parseInt(e.target.value));
+                }}
+              />
+              <button onClick={()=>envoyerDefi()}>Valider</button>
+            </div>
+          </div>
+        )}
         {loggedUser?.fonction === "professeur" && (
           <div>
             {points ? (
