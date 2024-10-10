@@ -24,10 +24,10 @@ h2 {
   font-family: "Harry Potter", serif; 
   border-bottom: 2px solid #ffcc00;
   padding-bottom: 0px;
-  margin-top: 120px;
+  margin-top: 80px;
 }
 
-/* Barre de recherche */
+
 .searchBar {
   display: flex;
   justify-content: center;

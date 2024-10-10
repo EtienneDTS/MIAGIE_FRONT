@@ -6,7 +6,7 @@ import "./GetAll.css";
 export const GetAll = ({ about }: { about: number }) => {
   const [name, setName] = useState<string>("");
   const [list, setList] = useState<any[]>([]);
-  
+
 
   const navigate = useNavigate();
   const path = about == 1 ? "eleve" : "professeur";
@@ -17,13 +17,13 @@ export const GetAll = ({ about }: { about: number }) => {
       const data = await response.json();
       setList(data);
     } else {
-      const response = await fetch(`http://localhost:8080/${path}?nom=${arg}`);
+      const response = await fetch(
+        `http://localhost:8080/${path}?filtre=${arg}`
+      );
       const data = await response.json();
       setList(data);
     }
   };
-
-  
 
   useEffect(() => {
     fetchData(name);
@@ -129,24 +129,25 @@ export const GetAll = ({ about }: { about: number }) => {
           onChange={(e) => setName(e.target.value)}
           value={name}
         />
-        <button className="btn-img"></button>
       </div>
+      
+
       <div className="list">
         {list.map((item, index) => (
           <div
             key={index}
             className="item"
-            onClick={() => {
-              console.log(path);
-              console.log(`/${path}/${item.id}`);
-              navigate(`/${path}/${item.id}`);
-            }}
+            
           >
-            <p>{item.nom}</p>
-            <p>{item.prenom}</p>
+            <p onClick={() => {
+              navigate(`/${path}/${item.id}`);
+            }}>{item.nom}</p>
+            <p onClick={() => {
+              navigate(`/${path}/${item.id}`);
+            }}>{item.prenom}</p>
             <p>{item.totalPoints}</p>
             <p>
-              <div className="houselogo">
+              <div className="houselogo" onClick={()=>{navigate(`/maison/${item.nomMaison}`)}}>
                 <HouseLogo house={item.nomMaison} />
               </div>
             </p>

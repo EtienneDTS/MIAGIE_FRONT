@@ -8,6 +8,8 @@ import { Detail } from "./pages/Detail";
 import { Login } from "./pages/Login";
 
 import { AddWizard } from "./pages/AddWizard";
+import { GetHouses } from "./pages/getHouses";
+import { HouseDetail } from "./pages/HouseDetail";
 
 function App() {
   const [loggedUser, setLoggedUser] = useState<any>(null);
@@ -31,7 +33,12 @@ function App() {
           path="/login"
           element={<Login setLoggedUser={setLoggedUser} />}
         />
+        
         <Route path="/ajouter" element={<AddWizard />} />
+
+        <Route path="/maisons" element={<GetHouses />} />
+        <Route path="/maison/:nom" element={<HouseDetail />} />
+
       </Routes>
       
     </Router>

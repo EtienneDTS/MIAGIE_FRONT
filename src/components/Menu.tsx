@@ -1,7 +1,7 @@
 import "./Menu.css";
 import { useNavigate } from "react-router-dom";
 
-export const Menu = (loggedUser: any) => {
+export const Menu = ({loggedUser}: any) => {
   const navigate = useNavigate();
 
   return (
