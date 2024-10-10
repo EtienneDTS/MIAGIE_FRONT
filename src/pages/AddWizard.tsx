@@ -5,7 +5,6 @@ import { HouseLogo } from "../components/HouseLogo";
 export const AddWizard = () => {
   const [nom, setNom] = useState("");
   const [prenom, setPrenom] = useState("");
-  const [id, setId] = useState("");
   const [nomMaison, setNomMaison] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -15,7 +14,7 @@ export const AddWizard = () => {
     // Vous pouvez ajouter une logique pour envoyer ces données à votre backend ici
 
     // Exemple de validation simple
-    if (!nom || !prenom || !id || !nomMaison) {
+    if (!nom || !prenom || !nomMaison) {
       setErrorMessage("Tous les champs doivent être remplis !");
       return;
     }
@@ -25,11 +24,10 @@ export const AddWizard = () => {
     const requestBody = {
       nom,
       prenom,
-      id,
       nomMaison,
     };
     
-    await fetch("http://localhost:8080/ajouter", {
+    await fetch("http://localhost:8080/eleve", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -41,7 +39,6 @@ export const AddWizard = () => {
 
     setNom("");
     setPrenom("");
-    setId("");
     setNomMaison("");
   };
 
@@ -69,17 +66,6 @@ export const AddWizard = () => {
               value={prenom}
               onChange={(e) => setPrenom(e.target.value)}
               placeholder="Entrez le prénom"
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="id">Identifiant</label>
-            <input
-              type="text"
-              id="id"
-              value={id}
-              onChange={(e) => setId(e.target.value)}
-              placeholder="Entrez l'identifiant"
             />
           </div>
 

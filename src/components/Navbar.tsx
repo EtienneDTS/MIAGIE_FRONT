@@ -15,14 +15,13 @@ export const Navbar = ({loggedUser, setLoggedUser}:any) => {
     console.log(loggedUser);
 
     const getBestHouse = async () => {
-        // const response = await fetch("http://localhost:8080/maison/nomMaisonGagnante");
-        // const data = await response.json();
-        // setBestHouse(data);
+         const response = await fetch("http://localhost:8080/maison/nomMaisonGagnante",{
+         });
+         const data = await response.json();
+         setBestHouse(data);
+         console.log(data)
 
-        setBestHouse({
-            nomMaison: "Gryffondor",
-            nbPointTotal: 200
-        });
+        
         
     }
 

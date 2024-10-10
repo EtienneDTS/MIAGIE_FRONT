@@ -76,10 +76,10 @@ export const GetHouses = () => {
     },
   ];
   const fetchData = async () => {
-    // const response = await fetch(`http://localhost:8080/maison`);
-    // const data = await response.json();
-    // setHousesData(data);
-    setHousesData(houseData);
+     const response = await fetch(`http://localhost:8080/maison`);
+    const data = await response.json();
+    setHousesData(data);
+    //setHousesData(houseData);
   };
 
   useEffect(() => {

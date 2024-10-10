@@ -28,7 +28,7 @@ function App() {
           element={<Detail path="professeur" loggedUser={loggedUser} />}
         />
         <Route path="/eleves" element={<GetAll about={1} />} />
-        <Route path="/profs" element={<GetAll about={2} />} />
+        <Route path="/professeurs" element={<GetAll about={2} />} />
         <Route
           path="/login"
           element={<Login setLoggedUser={setLoggedUser} />}

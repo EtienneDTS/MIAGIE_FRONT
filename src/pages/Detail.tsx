@@ -11,7 +11,7 @@ interface User {
   totalPoints?: number;
   nomMaison?: string;
   specialite?: string;
-  matiere?: string;
+  nomMatiere?: string;
 }
 
 export const Detail = ({
@@ -35,24 +35,27 @@ export const Detail = ({
       const response = await fetch(`http://localhost:8080/${path}/${id}`);
       const data = await response.json();
       setUser(data);
+      console.log(path, id)
     } catch (error) {
       console.error("Erreur lors de la récupération des données : ", error);
     }
   };
 
   useEffect(() => {
-    // fetchUserData();
+    fetchUserData();
+    /*
     setUser({
       id: 4,
       totalPoints: 0,
       nom: "Longbottom",
       prenom: "Neville",
       nomMaison: "Gryffondor",
-    });
+    });*/
+    console.log(user, "ixi")
   }, [id]);
-
+    
   const addPoints = async () => {
-    const response = await fetch("http://localhost:8080/evaluer", {
+    await fetch("http://localhost:8080/evaluer", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -63,8 +66,6 @@ export const Detail = ({
         nbPoints: numberPoints,
       }),
     });
-    const data = await response.json();
-    console.log(data);
     fetchUserData();
   };
 
@@ -108,12 +109,23 @@ export const Detail = ({
         <div className="detail-item">
           <strong>Identifiant:</strong> <span>{id}</span>
         </div>
+        
+        {user?.nomMaison !== undefined ?
+        <>
+          <div className="detail-item">
+            <strong>Maison:</strong> <span>{user?.nomMaison}</span>
+          </div>
+          <div className="detail-item">
+            <strong>Total des Points:</strong> <span>{user?.totalPoints}</span>
+          </div>
+        </> : 
         <div className="detail-item">
-          <strong>Maison:</strong> <span>{user?.nomMaison}</span>
-        </div>
-        <div className="detail-item">
-          <strong>Total des Points:</strong> <span>{user?.totalPoints}</span>
-        </div>
+        <strong>Nom matière:</strong> <span>{user?.nomMatiere}</span>
+      </div>
+
+          
+
+        }
       </div>
       <div className="profile-footer">
         {user &&

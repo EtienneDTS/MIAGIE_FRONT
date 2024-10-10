@@ -1,6 +1,6 @@
 .wizzard-box {
   width: 100%;
-  height: 100vh;
+  height: 150vh;
   position: absolute;
   top: 0;
   background-image: url("/wizard.png");
@@ -14,7 +14,7 @@
   width: 100%;
   max-width: 400px;
   left: 50%;
-  top: 50%;
+  top: 60%;
   transform: translate(-50%, -50%);
   padding: 20px;
   background-color: rgba(0, 0, 0, 0.8);

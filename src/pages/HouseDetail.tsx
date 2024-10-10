@@ -22,7 +22,8 @@ export const HouseDetail = () => {
   };
 
   useEffect(() => {
-    // fetchUserData();
+     fetchUserData();
+     /*
     setMaison({
       nomMaison: "Serdaigle",
       eleves: [
@@ -91,7 +92,7 @@ export const HouseDetail = () => {
         },
       ],
       nbPointTotal: 0,
-    });
+    });*/
   }, [nom]);
 
   return (

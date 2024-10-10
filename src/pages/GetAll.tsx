@@ -17,8 +17,9 @@ export const GetAll = ({ about }: { about: number }) => {
       const data = await response.json();
       setList(data);
     } else {
+      console.log(`http://localhost:8080/${path}?filter=${arg}`)
       const response = await fetch(
-        `http://localhost:8080/${path}?filtre=${arg}`
+        `http://localhost:8080/${path}?filter=${arg}`
       );
       const data = await response.json();
       setList(data);
@@ -26,11 +27,13 @@ export const GetAll = ({ about }: { about: number }) => {
   };
 
   useEffect(() => {
+    console.log(name)
     fetchData(name);
   }, [name]);
 
   useEffect(() => {
-    // fetchData("");
+    fetchData("");
+    /*
     setList([
       {
         id: 1,
@@ -116,8 +119,9 @@ export const GetAll = ({ about }: { about: number }) => {
         totalPoints: 155,
         nomMaison: "Serpentard",
       },
-    ]);
+    ]);*/
   }, []);
+
 
   return (
     <div className="container">
@@ -146,11 +150,14 @@ export const GetAll = ({ about }: { about: number }) => {
               navigate(`/${path}/${item.id}`);
             }}>{item.prenom}</p>
             <p>{item.totalPoints}</p>
-            <p>
+            {about == 1 &&
+             <p>
               <div className="houselogo" onClick={()=>{navigate(`/maison/${item.nomMaison}`)}}>
                 <HouseLogo house={item.nomMaison} />
               </div>
             </p>
+            }
+        
           </div>
         ))}
       </div>
