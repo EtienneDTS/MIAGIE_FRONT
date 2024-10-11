@@ -17,9 +17,11 @@ interface User {
 export const Detail = ({
   path,
   loggedUser,
+  getBestHouse,
 }: {
   path: string;
   loggedUser: any;
+  getBestHouse: () => Promise<void>;
 }) => {
   const { id } = useParams<{ id: string }>();
   const [user, setUser] = useState<User>();
@@ -67,6 +69,7 @@ export const Detail = ({
       }),
     });
     fetchUserData();
+    getBestHouse();
   };
 
   const envoyerDefi = async () => {

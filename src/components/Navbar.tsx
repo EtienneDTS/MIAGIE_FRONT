@@ -3,9 +3,9 @@ import "./Navbar.css";
 import { useNavigate } from "react-router-dom";
 import { HouseLogo } from "./HouseLogo";
 
-export const Navbar = ({loggedUser, setLoggedUser}:any) => {
+export const Navbar = ({loggedUser, setLoggedUser, bestHouse}:any) => {
 
-    const [bestHouse, setBestHouse] = useState<any>(null);
+    
 
     const navigate = useNavigate();
     useEffect(() => {
@@ -14,20 +14,7 @@ export const Navbar = ({loggedUser, setLoggedUser}:any) => {
     , [loggedUser]);
     console.log(loggedUser);
 
-    const getBestHouse = async () => {
-         const response = await fetch("http://localhost:8080/maison/nomMaisonGagnante",{
-         });
-         const data = await response.json();
-         setBestHouse(data);
-         console.log(data)
-
-        
-        
-    }
-
-    useEffect(() => {
-        getBestHouse();
-    }, []);
+    
 
     return (
         <nav className="navbar">

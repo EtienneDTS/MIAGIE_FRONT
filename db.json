@@ -1,9 +1,9 @@
 [
     {
-        "nom": "nom",
-        "prenom": "prenom",
+        "nom": "Rogue",
+        "prenom": "Severus",
         "id": 1,
-        "motDePasse": "motDePasse",
+        "motDePasse": "pwd",
         "fonction": "professeur"
         
     },
@@ -11,7 +11,7 @@
         "nom": "Lovegood",
         "prenom": "Luna",
         "id": 21,
-        "motDePasse": "motDePasse",
+        "motDePasse": "pwd",
         "fonction": "eleve",
         "nomMaison": "Serdaigle"
         
